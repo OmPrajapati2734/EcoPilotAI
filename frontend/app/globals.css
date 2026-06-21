@@ -294,14 +294,59 @@ p {
 }
 
 .col-12 { grid-column: span 12; }
+.col-10 { grid-column: span 10; }
+.col-9 { grid-column: span 9; }
 .col-8 { grid-column: span 8; }
+.col-7 { grid-column: span 7; }
 .col-6 { grid-column: span 6; }
+.col-5 { grid-column: span 5; }
 .col-4 { grid-column: span 4; }
 .col-3 { grid-column: span 3; }
 
 @media (max-width: 1024px) {
-  .col-8, .col-6, .col-4, .col-3 {
+  .col-10, .col-9, .col-8, .col-7, .col-6, .col-5, .col-4, .col-3 {
     grid-column: span 12;
+  }
+}
+
+@media (max-width: 768px) {
+  .console-container {
+    flex-direction: column;
+  }
+  .console-sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid hsl(var(--border-glass));
+    padding: 1rem;
+    gap: 1rem;
+  }
+  .console-nav-list {
+    flex-direction: row;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    gap: 0.4rem;
+    -webkit-overflow-scrolling: touch;
+  }
+  .console-nav-item {
+    white-space: nowrap;
+    padding: 0.5rem 0.8rem;
+    font-size: 0.85rem;
+  }
+  .sidebar-user {
+    margin-top: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+  .sidebar-user button {
+    width: auto !important;
+    margin-top: 0 !important;
+    padding: 0.35rem 0.75rem !important;
+  }
+  .console-main {
+    padding: 1.25rem 1rem;
   }
 }
 

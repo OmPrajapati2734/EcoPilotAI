@@ -524,9 +524,9 @@ export default function Dashboard() {
                   <h3 style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>⚔️ Green Missions</h3>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginTop: '1rem' }}>
                     {missions.slice(0, 2).map((m) => (
-                      <div key={m.Id} style={{ display: 'flex', justifyContent: 'space-between', background: 'rgba(255,255,255,0.02)', padding: '0.5rem', borderRadius: '6px', fontSize: '0.8rem' }}>
-                        <span>⚔️ {m.Title}</span>
-                        <span style={{ color: 'hsl(var(--primary))', fontWeight: 600 }}>+{m.RewardXP} XP</span>
+                      <div key={m.id} style={{ display: 'flex', justifyContent: 'space-between', background: 'rgba(255,255,255,0.02)', padding: '0.5rem', borderRadius: '6px', fontSize: '0.8rem' }}>
+                        <span>⚔️ {m.title}</span>
+                        <span style={{ color: 'hsl(var(--primary))', fontWeight: 600 }}>+{m.rewardXP} XP</span>
                       </div>
                     ))}
                     {missions.length === 0 && <p style={{ fontSize: '0.8rem', fontStyle: 'italic' }}>No active challenges. Claim a new set!</p>}
@@ -983,7 +983,7 @@ export default function Dashboard() {
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
               {missions.map((mission) => (
-                <div key={mission.Id} style={{
+                <div key={mission.id} style={{
                   padding: '1.25rem',
                   background: 'rgba(0,0,0,0.15)',
                   border: '1px solid hsl(var(--border-glass))',
@@ -997,25 +997,25 @@ export default function Dashboard() {
                   <div style={{ flex: 1, minWidth: '280px' }}>
                     <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', marginBottom: '0.5rem' }}>
                       <span style={{ fontSize: '0.7rem', fontWeight: 700, padding: '0.15rem 0.4rem', border: '1px solid hsl(var(--accent))', borderRadius: '4px', color: 'hsl(var(--accent))', textTransform: 'uppercase' }}>
-                        {mission.Difficulty}
+                        {mission.difficulty}
                       </span>
-                      <span style={{ fontSize: '0.75rem', color: 'hsl(var(--text-muted))' }}>{mission.Category}</span>
+                      <span style={{ fontSize: '0.75rem', color: 'hsl(var(--text-muted))' }}>{mission.category}</span>
                     </div>
-                    <h4>{mission.Title}</h4>
-                    <p style={{ fontSize: '0.85rem', color: 'hsl(var(--text-secondary))', marginTop: '0.25rem' }}>{mission.Description}</p>
+                    <h4>{mission.title}</h4>
+                    <p style={{ fontSize: '0.85rem', color: 'hsl(var(--text-secondary))', marginTop: '0.25rem' }}>{mission.description}</p>
                   </div>
 
                   <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
                     <div style={{ textAlign: 'right' }}>
                       <span style={{ fontSize: '0.8rem', background: 'rgba(16,185,129,0.1)', color: '#10B981', padding: '0.2rem 0.5rem', borderRadius: '6px', fontWeight: 700, marginRight: '0.4rem' }}>
-                        +{mission.RewardXP} XP
+                        +{mission.rewardXP} XP
                       </span>
                       <span style={{ fontSize: '0.8rem', background: 'rgba(6,182,212,0.1)', color: 'hsl(var(--accent))', padding: '0.2rem 0.5rem', borderRadius: '6px', fontWeight: 700 }}>
-                        +{mission.RewardPoints} Pts
+                        +{mission.rewardPoints} Pts
                       </span>
                     </div>
                     <button 
-                      onClick={() => handleCompleteMission(mission.Id)}
+                      onClick={() => handleCompleteMission(mission.id)}
                       className="btn btn-primary"
                       style={{ padding: '0.5rem 1rem', fontSize: '0.85rem' }}
                     >
@@ -1049,22 +1049,22 @@ export default function Dashboard() {
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                   {leaderboard.scoreLeaderboard.map((entry: any) => (
                     <div 
-                      key={entry.AnonymousName} 
+                      key={entry.anonymousName} 
                       style={{ 
                         display: 'flex', 
                         justifyContent: 'space-between', 
                         padding: '0.75rem 1rem', 
-                        background: entry.IsCurrentUser ? 'hsl(var(--primary-glow))' : 'rgba(255,255,255,0.02)', 
-                        border: `1px solid ${entry.IsCurrentUser ? 'hsl(var(--primary) / 0.3)' : 'hsl(var(--border-glass))'}`,
+                        background: entry.isCurrentUser ? 'hsl(var(--primary-glow))' : 'rgba(255,255,255,0.02)', 
+                        border: `1px solid ${entry.isCurrentUser ? 'hsl(var(--primary) / 0.3)' : 'hsl(var(--border-glass))'}`,
                         borderRadius: '8px',
                         fontSize: '0.85rem'
                       }}
                     >
                       <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-                        <span style={{ fontWeight: 800, color: entry.Rank <= 3 ? '#ff9f43' : 'hsl(var(--text-muted))' }}>#{entry.Rank}</span>
-                        <span style={{ fontWeight: entry.IsCurrentUser ? 700 : 500 }}>{entry.AnonymousName}</span>
+                        <span style={{ fontWeight: 800, color: entry.rank <= 3 ? '#ff9f43' : 'hsl(var(--text-muted))' }}>#{entry.rank}</span>
+                        <span style={{ fontWeight: entry.isCurrentUser ? 700 : 500 }}>{entry.anonymousName}</span>
                       </div>
-                      <div style={{ fontWeight: 700, color: '#10B981' }}>{entry.CarbonScore} pts</div>
+                      <div style={{ fontWeight: 700, color: '#10B981' }}>{entry.carbonScore} pts</div>
                     </div>
                   ))}
                 </div>
@@ -1076,23 +1076,23 @@ export default function Dashboard() {
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                   {leaderboard.improvementLeaderboard.map((entry: any) => (
                     <div 
-                      key={entry.AnonymousName} 
+                      key={entry.anonymousName} 
                       style={{ 
                         display: 'flex', 
                         justifyContent: 'space-between', 
                         padding: '0.75rem 1rem', 
-                        background: entry.IsCurrentUser ? 'hsl(var(--primary-glow))' : 'rgba(255,255,255,0.02)', 
-                        border: `1px solid ${entry.IsCurrentUser ? 'hsl(var(--primary) / 0.3)' : 'hsl(var(--border-glass))'}`,
+                        background: entry.isCurrentUser ? 'hsl(var(--primary-glow))' : 'rgba(255,255,255,0.02)', 
+                        border: `1px solid ${entry.isCurrentUser ? 'hsl(var(--primary) / 0.3)' : 'hsl(var(--border-glass))'}`,
                         borderRadius: '8px',
                         fontSize: '0.85rem'
                       }}
                     >
                       <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-                        <span style={{ fontWeight: 800, color: entry.Rank <= 3 ? '#ff9f43' : 'hsl(var(--text-muted))' }}>#{entry.Rank}</span>
-                        <span style={{ fontWeight: entry.IsCurrentUser ? 700 : 500 }}>{entry.AnonymousName}</span>
+                        <span style={{ fontWeight: 800, color: entry.rank <= 3 ? '#ff9f43' : 'hsl(var(--text-muted))' }}>#{entry.rank}</span>
+                        <span style={{ fontWeight: entry.isCurrentUser ? 700 : 500 }}>{entry.anonymousName}</span>
                       </div>
                       <div style={{ fontWeight: 700, color: 'hsl(var(--accent))' }}>
-                        {entry.ImprovementRate >= 0 ? `-${entry.ImprovementRate} kg CO₂` : `+${Math.abs(entry.ImprovementRate)} kg CO₂`}
+                        {entry.improvementRate >= 0 ? `-${entry.improvementRate} kg CO₂` : `+${Math.abs(entry.improvementRate)} kg CO₂`}
                       </div>
                     </div>
                   ))}
