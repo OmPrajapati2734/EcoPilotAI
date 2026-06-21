@@ -1,0 +1,12 @@
+.git
+.gitignore
+.next/
+node_modules/
+frontend/node_modules/
+frontend/.next/
+backend/bin/
+backend/obj/
+backend/ecopilot.db
+backend/ecopilot.db-journal
+*.db
+*.log

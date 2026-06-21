@@ -1,0 +1,31 @@
+# Dependencies
+node_modules/
+frontend/node_modules/
+frontend/.next/
+
+# Builds and temporary files
+bin/
+obj/
+backend/bin/
+backend/obj/
+backend/ecopilot.db
+backend/ecopilot.db-journal
+*.db
+*.db-journal
+*.log
+
+# Sensitive environment/credentials
+gcp_creds.json
+.env
+.env.local
+.env.development
+.env.production
+.env.staging
+
+# IDEs
+.vs/
+.vscode/
+.idea/
+*.suo
+*.user
+*.sln.docstates
