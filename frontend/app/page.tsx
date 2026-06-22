@@ -49,15 +49,17 @@ export default function AuthPage() {
     <div className="auth-container">
       <div className="auth-card animate-fade-in">
         <div className="auth-header">
-          <div className="auth-logo">🍀</div>
+          <div className="auth-logo"><span role="img" aria-label="clover">🍀</span></div>
           <h1 className="auth-title">EcoPilot AI</h1>
           <p style={{ fontSize: '0.85rem', color: 'hsl(var(--text-muted))', marginTop: '0.5rem' }}>
             Intelligent Carbon Twin & AI Coach
           </p>
         </div>
 
-        <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem', borderBottom: '1px solid hsl(var(--border-glass))', paddingBottom: '0.75rem' }}>
+        <div role="tablist" aria-label="Authentication Options" style={{ display: 'flex', gap: '1rem', marginBottom: '2rem', borderBottom: '1px solid hsl(var(--border-glass))', paddingBottom: '0.75rem' }}>
           <button
+            role="tab"
+            aria-selected={isLogin}
             onClick={() => { setIsLogin(true); setError(''); }}
             style={{
               flex: 1,
@@ -75,6 +77,8 @@ export default function AuthPage() {
             Sign In
           </button>
           <button
+            role="tab"
+            aria-selected={!isLogin}
             onClick={() => { setIsLogin(false); setError(''); }}
             style={{
               flex: 1,

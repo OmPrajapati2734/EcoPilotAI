@@ -482,7 +482,7 @@ export default function Dashboard() {
                     {currentScore >= 90 ? ' extremely sustainable!' : currentScore >= 70 ? ' moderately stable.' : ' higher than baseline climate safe levels.'}
                   </p>
                   <button onClick={() => setActiveTab('logger')} className="btn btn-primary" style={{ padding: '0.5rem 1rem', fontSize: '0.8rem', marginTop: '1rem' }}>
-                    ✏️ Log Activity
+                    <span role="img" aria-label="pencil">✏️</span> Log Activity
                   </button>
                 </div>
               </div>
@@ -504,7 +504,7 @@ export default function Dashboard() {
               {/* AI twin projection preview */}
               <div className="col-6 glass-card" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                 <div>
-                  <h3 style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>👥 Carbon Twin</h3>
+                  <h3 style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}><span role="img" aria-label="two users">👥</span> Carbon Twin</h3>
                   <p style={{ fontSize: '0.85rem', color: 'hsl(var(--text-secondary))' }}>
                     Projections show that under your current trend, your 12-month footprint is expected to be 
                     <strong> {twinForecast.projection12m.co2.toFixed(1)} kg CO₂/day</strong>.
@@ -521,7 +521,7 @@ export default function Dashboard() {
               {/* Weekly Challenges snippet */}
               <div className="col-6 glass-card" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                 <div>
-                  <h3 style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>⚔️ Green Missions</h3>
+                  <h3 style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}><span role="img" aria-label="crossed swords">⚔️</span> Green Missions</h3>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginTop: '1rem' }}>
                     {missions.slice(0, 2).map((m) => (
                       <div key={m.id} style={{ display: 'flex', justifyContent: 'space-between', background: 'rgba(255,255,255,0.02)', padding: '0.5rem', borderRadius: '6px', fontSize: '0.8rem' }}>
@@ -1216,8 +1216,8 @@ export default function Dashboard() {
                 <h3>Step 1: Your Commute Method</h3>
                 <p style={{ fontSize: '0.85rem' }}>How do you primarily travel on a typical day?</p>
                 <div className="form-group">
-                  <label>Primary Transit Mode</label>
-                  <select value={onboardCommute} onChange={(e) => setOnboardCommute(e.target.value)} className="form-select">
+                  <label htmlFor="onboardCommute">Primary Transit Mode</label>
+                  <select id="onboardCommute" value={onboardCommute} onChange={(e) => setOnboardCommute(e.target.value)} className="form-select">
                     <option value="Petrol">Petrol Car</option>
                     <option value="Diesel">Diesel Car</option>
                     <option value="Hybrid">Hybrid Car</option>
@@ -1228,12 +1228,12 @@ export default function Dashboard() {
                 </div>
                 {onboardCommute !== 'Bicycle' && onboardCommute !== 'PublicTransit' && (
                   <div className="form-group">
-                    <label>Average Daily Distance (km)</label>
+                    <label htmlFor="onboardKm">Average Daily Distance (km)</label>
                     <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.3rem', fontSize: '0.8rem', fontWeight: 600 }}>
                       <span>Estimated distance</span>
                       <span style={{ color: 'hsl(var(--primary))' }}>{onboardKm} km</span>
                     </div>
-                    <input type="range" min="5" max="100" step="5" value={onboardKm} onChange={(e) => setOnboardKm(parseInt(e.target.value))} className="custom-slider" />
+                    <input id="onboardKm" type="range" min="5" max="100" step="5" value={onboardKm} onChange={(e) => setOnboardKm(parseInt(e.target.value))} className="custom-slider" />
                   </div>
                 )}
                 <button onClick={() => setOnboardStep(2)} className="btn btn-primary" style={{ width: '100%', marginTop: '1rem' }}>
@@ -1248,12 +1248,12 @@ export default function Dashboard() {
                 <h3>Step 2: Home Air Conditioning</h3>
                 <p style={{ fontSize: '0.85rem' }}>On average, how many hours per day do you run air conditioning?</p>
                 <div className="form-group">
-                  <label>AC Operation Duration</label>
+                  <label htmlFor="onboardAC">AC Operation Duration</label>
                   <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.3rem', fontSize: '0.8rem', fontWeight: 600 }}>
                     <span>Daily run time</span>
                     <span style={{ color: 'hsl(var(--accent))' }}>{onboardAC} Hours</span>
                   </div>
-                  <input type="range" min="0" max="12" step="1" value={onboardAC} onChange={(e) => setOnboardAC(parseInt(e.target.value))} className="custom-slider" />
+                  <input id="onboardAC" type="range" min="0" max="12" step="1" value={onboardAC} onChange={(e) => setOnboardAC(parseInt(e.target.value))} className="custom-slider" />
                 </div>
                 <div style={{ display: 'flex', gap: '1rem', marginTop: '1rem' }}>
                   <button onClick={() => setOnboardStep(1)} className="btn btn-outline" style={{ flex: 1 }}>
@@ -1272,8 +1272,8 @@ export default function Dashboard() {
                 <h3>Step 3: Food & Diet Profile</h3>
                 <p style={{ fontSize: '0.85rem' }}>Select the diet profile that closest matches your eating habits:</p>
                 <div className="form-group">
-                  <label>Daily Diet Type</label>
-                  <select value={onboardDiet} onChange={(e) => setOnboardDiet(e.target.value)} className="form-select">
+                  <label htmlFor="onboardDiet">Daily Diet Type</label>
+                  <select id="onboardDiet" value={onboardDiet} onChange={(e) => setOnboardDiet(e.target.value)} className="form-select">
                     <option value="Meat">Regular Meat Consumer (Heavy poultry/beef)</option>
                     <option value="Flexitarian">Flexitarian (Minimal meat / fish only)</option>
                     <option value="Vegetarian">Vegetarian (No meat, eggs/dairy allowed)</option>
@@ -1285,7 +1285,7 @@ export default function Dashboard() {
                     Back
                   </button>
                   <button onClick={handleOnboardSubmit} className="btn btn-accent" style={{ flex: 1 }}>
-                    Finish Setup 🚀
+                    Finish Setup <span role="img" aria-label="rocket">🚀</span>
                   </button>
                 </div>
               </div>
