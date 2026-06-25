@@ -32,6 +32,13 @@ async function request<T>(endpoint: string, method: string = 'GET', body?: any):
 
   if (!response.ok) {
     const errorMsg = await response.text();
+    if (response.status === 404 && errorMsg.includes('User not found')) {
+      if (typeof window !== 'undefined') {
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        window.location.href = '/';
+      }
+    }
     throw new Error(errorMsg || 'API Request failed');
   }
 
